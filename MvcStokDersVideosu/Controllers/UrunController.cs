@@ -15,7 +15,7 @@ namespace MvcStokDersVideosu.Controllers
         public ActionResult Index()
         {
             var degerler = db.URUNLER.ToList();
-
+            //ssasa
             return View(degerler);
         }
     }
