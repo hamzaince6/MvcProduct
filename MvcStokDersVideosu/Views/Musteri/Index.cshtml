@@ -1,0 +1,38 @@
+﻿@using MvcStokDersVideosu.Models.Entity
+@model List<TBLMUSTERILER>
+
+
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<table class="table table-bordered">
+
+    <tr>
+        <th>Müşteri Id</th>
+        <th>Müşteri Adı</th>
+        <th>Müşteri Soyadı</th>
+        <th>Sil</th>
+        <th>Güncelle</th>
+    </tr>
+    <tbody>
+        @foreach (var mus in Model)
+        {
+            <tr>
+                <th>@mus.MUSTERIID</th>
+                <td>@mus.MUSTERIAD</td>
+                <td>@mus.MUSTERISOYAD</td>
+                <td><a href="/MUSTERI/SIL/@mus.MUSTERIID" class="btn btn-danger">Sil</a></td>
+                <td><a href="/MUSTERI/GUNCELLE/@mus.MUSTERIID" class="btn btn-success">Güncelle</a></td>
+
+            </tr>
+        }
+    </tbody>
+
+
+
+</table>
+
+<a href="/MUSTERI/YeniMusteri/" class="btn btn-primary">Yeni Müşteri Ekle</a>

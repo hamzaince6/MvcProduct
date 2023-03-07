@@ -1,0 +1,29 @@
+﻿@using MvcStokDersVideosu.Models.Entity
+@model List<TBLKATEGORILER>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<table class="table table-bordered">
+    <tr>
+        <th>Kategori ID</th>
+        <th>Kategori ADI</th>
+        <th>Sil</th>
+        <th>Güncelle</th>
+
+    </tr>
+    <tbody>
+        @foreach(var ktgr in Model)
+            {
+        <tr>
+            <th>@ktgr.KATEGORIID</th>
+            <td>@ktgr.KATEGORIAD</td>
+            <td><a href="/KATEGORI/SIL/@ktgr.KATEGORIID" class="btn btn-danger">Sil</a></td>
+            <td><a href="/KATEGORI/GUNCELLE/@ktgr.KATEGORIID" class="btn btn-success">Güncelle</a></td>
+        </tr>
+            }
+    </tbody>
+</table>
+
+<a href="/KATEGORI/YeniKategori/" class="btn btn-primary">Yeni Kategori Ekle</a>
