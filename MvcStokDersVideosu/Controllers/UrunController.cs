@@ -18,5 +18,19 @@ namespace MvcStokDersVideosu.Controllers
             //ssasa
             return View(degerler);
         }
+        [HttpGet]
+        public ActionResult UrunEkle()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult UrunEkle(URUNLER p1)
+        {
+            db.URUNLER.Add(p1);
+            db.SaveChanges();
+            return View();
+        }
+            
     }
 }
