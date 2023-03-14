@@ -1,7 +1,24 @@
 ﻿@{
     ViewBag.Title = "About";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
 
-<p>Use this area to provide additional information.</p>
+<form method="get">
+
+    <fieldset>
+        Film Türü Seçin: <select id="MovieType" name="MovieType" class="form-control">
+
+            <option value="0">Action</option>
+
+            <option value="1">Drama</option>
+
+            <option selected="selected" value="2">Comedy</option>
+
+            <option value="3">Science Fiction</option>
+
+        </select>
+
+        
+
+    </fieldset>
+
+</form>

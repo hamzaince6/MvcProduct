@@ -1,4 +1,4 @@
-﻿
+﻿@model MvcStokDersVideosu.Models.Entity.URUNLER
 @{
     ViewBag.Title = "UrunEkle";
     Layout = "~/Views/Shared/_MainLayout.cshtml";
@@ -17,9 +17,10 @@
         <input type="text" class="form-control" name="MARKA" />
 
     </div>
+
     <div>
-        <label>Ürün Kategori Seçiniz</label>
-        <input type="text" class="form-control" name="URUNKATEGORI" />
+      <label>Ürün Kategori Seçiniz</label>
+      @Html.DropDownListFor(m=>m.TBLKATEGORILER.KATEGORIID,(List<SelectListItem>)ViewBag.dgr,new {@class="form-control" })
 
     </div>
 
@@ -28,10 +29,10 @@
         <input type="text" class="form-control" name="STOK" />
 
     </div>
-    
+
     <div>
         <label>Fiyat</label>
-        <input type="text" class="form-control" name="FİYAT" />
+        <input type="text" class="form-control" name="FIYAT" />
 
     </div>
 

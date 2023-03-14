@@ -11,6 +11,7 @@ namespace MvcStokDersVideosu.Models.Entity
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     
     public partial class TBLMUSTERILER
     {
@@ -21,7 +22,14 @@ namespace MvcStokDersVideosu.Models.Entity
         }
     
         public int MUSTERIID { get; set; }
+        
+        [Required(ErrorMessage = "İsim alanını boş bırakamazsınız...")]
+        [StringLength(50,ErrorMessage="En Fazla 50 karekterlik İsim Girin")]
         public string MUSTERIAD { get; set; }
+
+
+        [Required(ErrorMessage = "Soyisim alanını boş bırakamazsınız...")]
+        [StringLength(50, ErrorMessage = "En Fazla 50 karekterlik Soyisim Girin")]
         public string MUSTERISOYAD { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
