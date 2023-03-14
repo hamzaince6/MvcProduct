@@ -1,5 +1,7 @@
 ﻿@using MvcStokDersVideosu.Models.Entity
-@model List<TBLKATEGORILER>
+@using PagedList.Mvc
+@using PagedList
+@model PagedList.IPagedList<TBLKATEGORILER>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_MainLayout.cshtml";
@@ -14,16 +16,19 @@
 
     </tr>
     <tbody>
-        @foreach(var ktgr in Model)
-            {
+    @foreach(var ktgr in Model)
+    {
         <tr>
             <th>@ktgr.KATEGORIID</th>
             <td>@ktgr.KATEGORIAD</td>
             <td><a href="/KATEGORI/SIL/@ktgr.KATEGORIID" class="btn btn-danger">Sil</a></td>
             <td><a href="/KATEGORI/KategoriGetir/@ktgr.KATEGORIID" class="btn btn-success">Güncelle</a></td>
         </tr>
-            }
+    }
     </tbody>
 </table>
+@Html.PagedListPager((IPagedList)Model,sayfa=>Url.Action("Index",new {sayfa}))
+
+
 
 <a href="/KATEGORI/YeniKategori/" class="btn btn-primary">Yeni Kategori Ekle</a>

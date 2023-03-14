@@ -4,6 +4,9 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using MvcStokDersVideosu.Models.Entity;
+using PagedList;
+using PagedList.Mvc;
+
 
 namespace MvcStokDersVideosu.Controllers
 {
@@ -11,9 +14,10 @@ namespace MvcStokDersVideosu.Controllers
     {
         // GET: Kategori
         MvcDcStokEntities1 db = new MvcDcStokEntities1();
-        public ActionResult Index()
+        public ActionResult Index(int sayfa=1)
         {
-            var degerler = db.TBLKATEGORILER.ToList();
+            //var degerler = db.TBLKATEGORILER.ToList();
+            var degerler = db.TBLKATEGORILER.ToList().ToPagedList(sayfa, 10);
             return View(degerler);
         }
 

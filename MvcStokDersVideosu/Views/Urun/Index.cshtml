@@ -1,5 +1,7 @@
 ﻿@using MvcStokDersVideosu.Models.Entity
-@model List<URUNLER>
+@model PagedList.IPagedList<URUNLER>
+@using PagedList;
+@using PagedList.Mvc;
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_MainLayout.cshtml";
@@ -17,19 +19,20 @@
         <th>Güncelle</th>
     </tr>
     <tbody>
-        @foreach(var urn in Model)
-            {
-        <tr>
-            <th>@urn.URUNID</th>
-            <td>@urn.URUNAD</td>
-            <th>@urn.MARKA</th>
-            <td>@urn.TBLKATEGORILER.KATEGORIAD</td>
-            <td>@urn.FIYAT</td>
-            <td>@urn.STOK</td>
-            <td><a href="/URUN/SIL/@urn.URUNID" class="btn btn-danger">Sil</a></td>
-            <td><a href="/URUN/UrunGetir/@urn.URUNID" class="btn btn-success">Güncelle</a></td>
-        </tr>
-            }
+        @foreach (var urn in Model)
+        {
+            <tr>
+                <th>@urn.URUNID</th>
+                <td>@urn.URUNAD</td>
+                <th>@urn.MARKA</th>
+                <td>@urn.TBLKATEGORILER.KATEGORIAD</td>
+                <td>@urn.FIYAT</td>
+                <td>@urn.STOK</td>
+                <td><a href="/URUN/SIL/@urn.URUNID" class="btn btn-danger">Sil</a></td>
+                <td><a href="/URUN/UrunGetir/@urn.URUNID" class="btn btn-success">Güncelle</a></td>
+            </tr>
+        }
     </tbody>
 </table>
+@Html.PagedListPager((IPagedList)Model, sayfa => Url.Action("Index", new { sayfa }))
 <a href="/URUN/UrunEkle/" class="btn btn-primary">Yeni Ürün Ekle</a>

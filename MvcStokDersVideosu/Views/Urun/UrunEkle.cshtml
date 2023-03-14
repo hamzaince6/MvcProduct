@@ -8,20 +8,18 @@
 
     <div>
         <label>Ürün Adı</label>
-        <input type="text" class="form-control" name="URUNAD" />
-
+        <input type="text" class="form-control" placeholder="Ürünün adını giriniz.." name="URUNAD" />
     </div>
 
     <div>
         <label>Marka</label>
-        <input type="text" class="form-control" name="MARKA" />
+        <input type="text" class="form-control" placeholder="Buraya markayı yazınız.." name="MARKA" />
 
     </div>
 
     <div>
       <label>Ürün Kategori Seçiniz</label>
       @Html.DropDownListFor(m=>m.TBLKATEGORILER.KATEGORIID,(List<SelectListItem>)ViewBag.dgr,new {@class="form-control" })
-
     </div>
 
     <div>

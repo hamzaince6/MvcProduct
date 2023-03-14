@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using MvcStokDersVideosu.Models.Entity;
+using PagedList;
 
 
 namespace MvcStokDersVideosu.Controllers
@@ -13,9 +14,10 @@ namespace MvcStokDersVideosu.Controllers
         // GET: Urun
         MvcDcStokEntities1 db = new MvcDcStokEntities1();
 
-        public ActionResult Index()
+        public ActionResult Index(int sayfa=1)
         {
-            var degerler = db.URUNLER.ToList();
+            //var degerler = db.URUNLER.ToList();
+            var degerler = db.URUNLER.ToList().ToPagedList(sayfa, 10);
             return View(degerler);
         }
 
@@ -60,6 +62,20 @@ namespace MvcStokDersVideosu.Controllers
                                              }).ToList();
             ViewBag.dgr = degerler;
             return View("UrunGetir",urun);
+        }
+        public ActionResult Guncelle(URUNLER p1)
+        {
+            //Ürün günceleme çalışmıyor id hatası var kontrol et.Ders 38 Hata.
+            var urun = db.URUNLER.Find(p1.URUNID);
+            urun.URUNAD = p1.URUNAD;
+            urun.MARKA = p1.MARKA;
+            urun.STOK = p1.STOK;
+            urun.FIYAT = p1.FIYAT;
+            //urun.URUNKATEGORI = p1.URUNKATEGORI;
+            var ktgr = db.TBLKATEGORILER.Where(m => m.KATEGORIID == p1.TBLKATEGORILER.KATEGORIID).FirstOrDefault();
+            urun.URUNKATEGORI = ktgr.KATEGORIID;
+            db.SaveChanges();
+            return RedirectToAction("Index");
         }
     }
 }
