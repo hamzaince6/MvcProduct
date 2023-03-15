@@ -7,17 +7,21 @@
     Layout = "~/Views/Shared/_MainLayout.cshtml";
 }
 
-<table class="table table-bordered">
-    <tr>
-        <th>Ürün Id</th>
-        <th>Ürün Adı</th>
-        <th>Markası</th>
-        <th>Kategori</th>
-        <th>Fiyat</th>
-        <th>Kalan Stok</th>
-        <th>Sil</th>
-        <th>Güncelle</th>
-    </tr>
+
+
+<table id="deneme" class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Ürün Id</th>
+            <th>Ürün Adı</th>
+            <th>Markası</th>
+            <th>Kategori</th>
+            <th>Fiyat</th>
+            <th>Kalan Stok</th>
+            <th>Sil</th>
+            <th>Güncelle</th>
+        </tr>
+    </thead>
     <tbody>
         @foreach (var urn in Model)
         {
@@ -36,3 +40,9 @@
 </table>
 @Html.PagedListPager((IPagedList)Model, sayfa => Url.Action("Index", new { sayfa }))
 <a href="/URUN/UrunEkle/" class="btn btn-primary">Yeni Ürün Ekle</a>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+<link href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css" rel="stylesheet" />
+
+<script>
+    $('#deneme').DataTable();
+</script>

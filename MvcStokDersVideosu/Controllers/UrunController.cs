@@ -16,7 +16,7 @@ namespace MvcStokDersVideosu.Controllers
 
         public ActionResult Index(int sayfa=1)
         {
-            //var degerler = db.URUNLER.ToList();
+            var degerler = db.URUNLER.ToList();
             var degerler = db.URUNLER.ToList().ToPagedList(sayfa, 10);
             return View(degerler);
         }

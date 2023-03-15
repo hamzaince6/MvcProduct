@@ -15,8 +15,9 @@ namespace MvcStokDersVideosu.Controllers
     {
         // GET: Musteri
         MvcDcStokEntities1 db = new MvcDcStokEntities1();
-        public ActionResult Index(int sayfa=1)
+        public ActionResult Index(int sayfa = 1)
         {
+
             //var degerler = db.TBLMUSTERILER.ToList();
             var degerler = db.TBLMUSTERILER.ToList().ToPagedList(sayfa, 10);
             return View(degerler);
